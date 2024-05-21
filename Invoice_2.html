@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head type="text/css" media="print">
+    <title>Invoice</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+	
+	#ti {
+ 
+  font-size : 25px;
+  color: #000000;
+  margin: auto;
+  width: 50%
+}
+
+#myimg{
+  width: 35px;
+  height: 35px;
+  padding-left: 30px;
+}
+
+.item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+      color: #8ebf42;
+      }
+      .item input:hover, .item select:hover, .item textarea:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 8px 0 #8ebf42;
+      color: #8ebf42;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+	  
+	  .name-item input, .city-item input {
+      width: 200px<!--calc(50% - 20px)-->;
+      }
+	
+	table, td {
+  border: 1px solid black;
+}
+
+	</style>
+	</head>
+	<body >
+	
+	<p style="align:center;" > 
+    <img src="./aspire_logo.png" id ="myimg" alt ="myimg" style="align:center;"> 
+    <b id = "ti">ASPIRE PUBLIC SCHOOL<br>
+	Herodih, Kathadih, Koderma, 825409</b>
+	<h1 style="text-align:center;">
+	INVOICE
+	</h1>
+	</p>
+	<div class="item">
+          <p>Name</p>
+          <div class="name-item">
+            <input type="text" name="First" placeholder="First" />
+            <input type="text" name="Last" placeholder="Last" />
+          </div>
+    </div>
+	<div class="item">
+          <p>Class Details</p>
+          <div class="name-item">
+            <input type="text" name="First" placeholder="Class" />
+            <input type="text" name="Last" placeholder="Section" />
+            <input type="text" name="First" placeholder="Roll Number"/>		  
+          </div>
+	</div>	  
+	<div class="item">		
+          <p>Admission number</p>
+          <input type="text" name="First" placeholder="Admission Number"/>		  
+    </div>
+	<div class="item">		
+          <p>Month and Year</p>
+          <input id="mont" type="text" name="First" placeholder="Month"/>
+          <input id="Year" type="text" name="First" placeholder="Year"/>		  
+    </div>
+	
+	<table id="myTable">
+	<tbody id="ta">
+  <tr style="background-color:black;color:white;">
+    <th>Item</th>
+    <th>Quantity</th>
+	<th>Rate</th>
+    <th>Amount</th>
+  </tr>
+  <tr style="">
+    <td> Tution Fees </td>
+	<td><input type="text" name="Second" /></td>
+	<td>Rs<input type="text" name="Third"/></td>
+	<td>₹</td>
+  </tr>
+<tr style="">
+    <td> Sport Fees </td>
+	<td><input type="text" name="Second" /></td>
+	<td>Rs<input type="text" name="Third" /></td>
+	<td>₹</td>
+  </tr>
+<tr style="">
+    <td> Transport Fees </td>
+	<td><input type="text" name="Second" /></td>
+	<td>Rs<input type="text" name="Third" /></td>
+	<td>₹</td>
+  </tr>  
+  <tr style="">
+    <td> Development Fees </td>
+	<td><input type="text" name="Second" /></td>
+	<td>Rs<input type="text" name="Third" /></td>
+	<td>₹</td>
+  </tr>
+  <tr style="">
+    <td> Others </td>
+	<td><input type="text" name="Second" /></td>
+	<td>Rs<input type="text" name="Third" /></td>
+	<td>₹</td>
+  </tr>
+  <tr>
+     <td colspan="3"> Total</td>
+	 <td>₹</td>
+  </tr>
+  <tbody>
+</table>
+<p>
+<!--<button type="button" onclick="myFunction()">Add row</button>-->
+<button type="button" onclick="total()">Total</button>
+</p>
+<h4 style="padding-top:50px;">[Collector]</h4>
+<p id="demo2"></p>
+
+
+<script type="text/javascript">
+
+
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+const d = new Date();
+let month = months[d.getMonth()];
+document.getElementById("mont").innerHTML = month;
+
+document.getElementById("Year").innerHTML = d.getFullYear();
+
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
+document.getElementById("demo2").innerHTML= dateTime;
+
+function total() {
+var cell11 =document.getElementById("myTable").rows[1].cells[1];  
+var textbox11 = cell11.querySelector("input[type='text']"); 
+var textboxValue11 = textbox11.value;
+
+var cell12 =document.getElementById("myTable").rows[1].cells[2];  
+var textbox12 = cell12.querySelector("input[type='text']"); 
+var textboxValue12 = textbox12.value;
+
+/*var qty = document.getElementById("ta").rows[t].cells[0].innerHTML;
+var price = document.getElementById("ta").rows[t].cells[1].innerHTML;
+var ct = document.getElementById("ta").rows[t].cells[2].innerHTML;*/
+var as1 =  parseInt(textboxValue11) * parseInt(textboxValue12);
+//var ans = ((parseInt(qty)) * (parseInt(price)) * (parseInt(c)));
+document.getElementById("myTable").rows[1].cells[3].innerHTML =parseInt(as1);
+
+var cell21 =document.getElementById("myTable").rows[2].cells[1];  	
+var textbox21 = cell21.querySelector("input[type='text']"); 
+var textboxValue21 = textbox21.value;
+
+var cell22 =document.getElementById("myTable").rows[2].cells[2];  
+var textbox22 = cell22.querySelector("input[type='text']"); 
+var textboxValue22 = textbox22.value;
+
+/*var qty = document.getElementById("ta").rows[t].cells[0].innerHTML;
+var price = document.getElementById("ta").rows[t].cells[1].innerHTML;
+var ct = document.getElementById("ta").rows[t].cells[2].innerHTML;*/
+var as2 =  parseInt(textboxValue21) * parseInt(textboxValue22);
+//var ans = ((parseInt(qty)) * (parseInt(price)) * (parseInt(c)));
+document.getElementById("myTable").rows[2].cells[3].innerHTML =parseInt(as2);
+
+var cell31 =document.getElementById("myTable").rows[3].cells[1];  
+var textbox31 = cell31.querySelector("input[type='text']"); 
+var textboxValue31 = textbox31.value;
+
+var cell32 =document.getElementById("myTable").rows[3].cells[2];  
+var textbox32 = cell32.querySelector("input[type='text']"); 
+var textboxValue32 = textbox32.value;
+
+/*var qty = document.getElementById("ta").rows[t].cells[0].innerHTML;
+var price = document.getElementById("ta").rows[t].cells[1].innerHTML;
+var ct = document.getElementById("ta").rows[t].cells[2].innerHTML;*/
+var as3 =  parseInt(textboxValue31) * parseInt(textboxValue32);
+//var ans = ((parseInt(qty)) * (parseInt(price)) * (parseInt(c)));
+document.getElementById("myTable").rows[3].cells[3].innerHTML =parseInt(as3);
+
+var cell41 =document.getElementById("myTable").rows[4].cells[1];  
+var textbox41 = cell41.querySelector("input[type='text']"); 
+var textboxValue41 = textbox41.value;
+
+var cell42 =document.getElementById("myTable").rows[4].cells[2];  
+var textbox42 = cell42.querySelector("input[type='text']"); 
+var textboxValue42 = textbox42.value;
+
+/*var qty = document.getElementById("ta").rows[t].cells[0].innerHTML;
+var price = document.getElementById("ta").rows[t].cells[1].innerHTML;
+var ct = document.getElementById("ta").rows[t].cells[2].innerHTML;*/
+var as4 =  parseInt(textboxValue41) * parseInt(textboxValue42);
+//var ans = ((parseInt(qty)) * (parseInt(price)) * (parseInt(c)));
+document.getElementById("myTable").rows[4].cells[3].innerHTML =parseInt(as4);
+
+var cell51 =document.getElementById("myTable").rows[5].cells[1];  
+var textbox51 = cell51.querySelector("input[type='text']"); 
+var textboxValue51 = textbox51.value;
+
+var cell52 =document.getElementById("myTable").rows[5].cells[2];  
+var textbox52 = cell52.querySelector("input[type='text']"); 
+var textboxValue52 = textbox52.value;
+
+/*var qty = document.getElementById("ta").rows[t].cells[0].innerHTML;
+var price = document.getElementById("ta").rows[t].cells[1].innerHTML;
+var ct = document.getElementById("ta").rows[t].cells[2].innerHTML;*/
+var as5 =  parseInt(textboxValue51) * parseInt(textboxValue52);
+//var ans = ((parseInt(qty)) * (parseInt(price)) * (parseInt(c)));
+document.getElementById("myTable").rows[5].cells[3].innerHTML =parseInt(as5);
+
+var as6 = parseInt(as1)+parseInt(as2)+parseInt(as3)+parseInt(as4)+parseInt(as5);
+document.getElementById("myTable").rows[6].cells[1].innerHTML = parseInt(as6);
+}
+
+function myFunction() {
+  var table = document.getElementById("myTable");
+  var row = table.insertRow();
+  var ri = "ro-" + (table.rows.length - 1);
+  row.id = ri;
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  cell1.innerHTML = `<input type="text" name="First" placeholder="Item"/>`;
+  cell2.innerHTML = `<input type="text" name="Second" placeholder="Quantity"/>`;
+  cell3.innerHTML = `Rs<input type="text" name="Third" placeholder="Rate"/>`;
+  cell4.innerHTML = `₹`;
+  
+   document.getElementById("myTable").rows[1].onchange = function() 
+{
+
+/*var cell0 =document.getElementById("myTable").rows[1].cells[0];  
+var textbox0 = cell0.querySelector("input[type='text']"); 
+var textboxValue0 = textbox0.value;*/
+
+var cell1 =document.getElementById("myTable").rows[1].cells[1];  
+var textbox1 = cell1.querySelector("input[type='text']"); 
+var textboxValue1 = textbox1.value;
+
+var cell2 =document.getElementById("myTable").rows[1].cells[2];  
+var textbox2 = cell2.querySelector("input[type='text']"); 
+var textboxValue2 = textbox2.value;
+
+/*var qty = document.getElementById("ta").rows[t].cells[0].innerHTML;
+var price = document.getElementById("ta").rows[t].cells[1].innerHTML;
+var ct = document.getElementById("ta").rows[t].cells[2].innerHTML;*/
+var as =  parseInt(textboxValue1) * parseInt(textboxValue2);
+//var ans = ((parseInt(qty)) * (parseInt(price)) * (parseInt(c)));
+document.getElementById("myTable").rows[1].cells[3].innerHTML =parseInt(as);
+
+}
+  }
+  
+function WO(x) {
+var t = ;
+var cell0 =document.getElementById("myTable").rows[t].cells[0];  
+var textbox0 = cell0.querySelector("input[type='text']"); 
+var textboxValue0 = textbox0.value;
+
+var cell1 =document.getElementById("myTable").rows[t].cells[1];  
+var textbox1 = cell1.querySelector("input[type='text']"); 
+var textboxValue1 = textbox1.value;
+
+var cell2 =document.getElementById("myTable").rows[t].cells[2];  
+var textbox2 = cell2.querySelector("input[type='text']"); 
+var textboxValue2 = textbox2.value;
+
+/*var qty = document.getElementById("ta").rows[t].cells[0].innerHTML;
+var price = document.getElementById("ta").rows[t].cells[1].innerHTML;
+var ct = document.getElementById("ta").rows[t].cells[2].innerHTML;*/
+var as = parseInt(textboxValue0) * parseInt(textboxValue1) * parseInt(textboxValue2);
+//var ans = ((parseInt(qty)) * (parseInt(price)) * (parseInt(c)));
+document.getElementById("myTable").rows[t].cells[3].innerHTML =parseInt(as);
+}
+</script>
+</body>
+	
+	</html>	
+	
